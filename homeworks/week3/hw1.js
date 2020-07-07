@@ -12,7 +12,8 @@ rl.on('line', (line) => {
 
 /* eslint-disable no-unused-vars */
 /* eslint no-plusplus: "error" */
-function solve(n) {
+function solve(input) {
+  const n = Number(input[0]);
   let result = '';
   for (let i = 1; i < n + 1; i += 1) {
     result += '*';
