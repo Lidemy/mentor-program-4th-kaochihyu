@@ -2,7 +2,7 @@ const request = require('request');
 
 const baseUrl = 'https://lidemy-book-store.herokuapp.com';
 
-request(`${baseUrl}/books?_limit=10`,
+request(`${baseUrl}/books?_limit=20`,
   (err, response, body) => {
     let json = '';
     try {
