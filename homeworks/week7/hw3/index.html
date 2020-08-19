@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>TODO LIST</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+	  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500&display=swap" rel="stylesheet">
+	  <style>
+	  	* {
+	  		font-family: 微軟正黑體;
+	  		/*border: solid 1px rgba(0, 0, 0, 0.5);*/
+	  	}
+
+	  	body {
+	  		background-color: #eee;
+	  	}
+
+	  	.container {
+	  		width: 400px;
+	  		min-height: 450px;
+	  		background-color: #fff;
+	  		margin: 50px auto;
+	  		border-radius: 16px;
+	  		padding: 40px;
+	  		box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1)
+	  	}
+
+	  	.title {
+	  		font-family: 'Mukta', sans-serif;
+	  		font-weight: 400;
+	  		font-size: 20px;
+	  		color: #333;
+	  		margin-bottom: 30px;
+	  		letter-spacing: 1.5px;
+	  		text-align: left;
+	  	}
+
+	  	.add_item {
+	  		margin: 16px 0;
+        vertical-align: sub;
+	  	}
+
+	  	.add_item input {
+	  		border: solid 1px #cacece;;
+	  		border-radius: 5px;
+	  		width: 70%;
+	  		height: 30px;
+	  		font-size: 16px;
+	  		padding: 10px;
+	  		display: inline-block;
+      }
+
+	  	.add_item input:focus {
+	  		outline: #aaa auto 1px;
+	  	}
+
+	  	.add_btn {
+	  		margin-left: 10px;
+	  		width: 25px;
+	  		height: 25px;
+	  		padding: 5px;
+	  		font-size: 20px;
+	  		color: #555;
+	  		text-align: center;
+	  		cursor: default;
+	  		display: inline-block;
+	  	}
+
+	  	.add_btn:hover {
+	  		background-color: #ddd;
+	  		border-radius: 50%;
+	  	}
+
+	  	.items_list {
+	  		margin-top: 50px;
+	  		width: 100%;
+	  	}
+
+	  	.item {
+	  		margin-bottom: 20px;
+	  		color: #555;
+	  		max-width: 370px;
+	  		overflow: hidden;
+	  	}
+
+	  	.checkbox {
+	  		appearance: none;
+				background-color: #fff;
+				border: 1px solid #cacaca;
+				padding: 10px;
+				border-radius: 3px;
+				display: inline-block;
+				position: relative;
+				margin-right: 15px;
+				margin-bottom: -2px;
+				letter-spacing: 1.5px;
+	  	}
+
+	  	.checkbox:active, .checkbox:checked:active {
+	      box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+	      border: solid 1px #cacaca;
+      }
+
+			.checkbox:checked {
+				background-color: #fefefe;
+				border: 1px solid #cacaca;
+				box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+				color: #555;
+			}
+
+			.checkbox:focus {
+				outline: none;
+			}
+
+			.checkbox:checked:after {
+				content: '\2714';
+				font-size: 20px;
+				position: absolute;
+				top: -5px;
+				left: 3px;
+				color: #555;
+			}
+
+	  	.delete_btn {
+	  		display: inline-block;
+	  		float: right;
+	  		font-size: 20px;
+	  		width: 25px;
+	  		height: 25px;
+	  		transform: rotate(45deg);
+	  		cursor: default;
+	  		text-align: center;
+	  	}
+
+	  	.delete_btn:hover {
+	  		background-color: #ddd;
+	  		border-radius: 50px;
+	  		padding: 0px;
+	  	}
+
+	  	.finished, .not_finished {
+	  		display: inline-block;
+	  	}
+
+	  	.finished.hidden {
+	  		display: none;
+	  	}
+
+	  	.not_finished.hidden {
+	  		display: none;
+	  	}
+
+	  </style>
+	</head>
+	<body>
+		<div class="container">
+			<h4 class="title">TODO LIST</h4>
+			<div class="add_item">
+				<input class="add_text" type="text" />
+				<label for=""><div class="add_btn">+</div></label>
+			</div>
+			<div class="items_list">
+				<div class="item">
+					<input class="checkbox" type="checkbox" id="item" name="item">去公園散步
+					<div class="delete_btn">+</div>
+				</div>
+				<div class="item">
+					<input class="checkbox" type="checkbox" id="item" name="item">看 Nexflix
+					<div class="delete_btn">+</div>
+				</div>
+				<div class="item">
+					<input class="checkbox" type="checkbox" id="item" name="item">打掃房間
+					<div class="delete_btn">+</div>
+				</div>
+				<div class="item">
+					<input class="checkbox" type="checkbox" id="item" name="item">去買口罩
+					<div class="delete_btn">+</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			//增加項目
+			document.querySelector('.add_btn').addEventListener('click', function() {
+				const div = document.createElement('div')
+			  const addText = document.querySelector('.add_text')
+			  if (addText.value !== "") {
+				  div.classList.add('item')
+			    div.innerHTML = `
+			      <input class="checkbox" type="checkbox" id="item" name="item">${addText.value}
+			      <div class="delete_btn">+</div>
+			    `
+				  document.querySelector('.items_list').appendChild(div)
+			  }
+			  addText.value = ""				
+		  })
+
+		  //刪除項目
+		  document.querySelector('.items_list').addEventListener('click', function(e) {
+		  	console.log(e.target.classList.contains('delete_btn'))
+		  	if (e.target.classList.contains('delete_btn')) {
+		  		document.querySelector('.items_list').removeChild(e.target.closest('.item'))
+		  	}
+		  })
+		</script>
+	</body>
+</html>
