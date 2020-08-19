@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	  <title>拖延運動報名表單</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+	  <style>
+
+	  	* {
+	  		font-family: "微軟正黑體";
+	  		box-sizing: border-box;
+	  	}
+
+	  	body {
+	  		background-color: #f0f0f0;
+	  	}
+
+	  	.container {
+	  		width: 645px;
+	  		height: auto;
+	  		border-top: solid 8px #fad312;
+	  		margin: 120px auto 66px auto;
+	  		background-color: #fff;
+	  		box-shadow: 1.8px 2.4px 5px 0 rgba(0, 0, 0, 0.3);
+	  		padding: 40px;
+	  	}
+
+	  	.title {
+	  		font-size: 36px;
+	  		letter-spacing: 1.8px;
+	  		margin-bottom: 35px;
+	  	}
+
+	  	.info {
+	  		font-size: 14px;
+	  		margin: 0px
+	  	}
+
+	  	.container h4 + h4 {
+	  		margin-top: 11px;
+	  	}
+
+	  	.note {
+	  		font-size: 16px;
+	  		color: #e74149;
+	  		margin-top: 22px;
+	  		margin-bottom: 22px;
+	  	}
+
+	  	.star {
+	  		color: #e74149;
+	  	}
+
+	  	.formitems {
+	  		margin-top: 55px;
+	  		display: flex;
+	  		flex-direction: column;
+	  	}
+
+	  	.formitems label {
+	  		font-size: 20px;
+	  		margin-bottom: 20px;
+	  	}
+
+	  	.formitems input {
+	  		font-size: 16px;
+	  		color: #afafaf;
+	  		width: 287px;
+	  		height: 23px;
+	  		border: solid 1px #d0d0d0;
+	  	}
+
+	  	div.item {
+	  		display: flex;
+	  		flex-direction: column;
+	  		margin-bottom: 50px;
+	  	}
+
+
+	  	div.radio {
+	  		padding: 0px;
+	  		margin-top: 24px;
+
+	  	}
+
+	  	input.radio {
+	  		font-size: 13px;
+	  		width: initial;
+	  		height: initial;
+	  		margin-bottom: initial;
+	  	}
+
+	  	label.radio {
+	  		font-size: 14px;
+	  		height: initial;
+	  		color: black;
+	  		display: inline-block;
+	  		margin-bottom: initial;
+
+	  	}
+
+	  	span.text {
+	  		font-size: 14px;
+	  	}
+
+	  	input.submit-button {
+	  		font-size: 15px;
+	  		width: 96px;
+	  		height: auto;
+	  		padding: 12px 32px;
+	  		display: inline-block;
+	  		background-color: #fad312;
+	  		border-radius: 3px;
+	  		cursor: pointer;
+	  		color: black;
+	  	}
+
+	  	.warn {
+	  		color: #e74149;
+	  		font-size: 14px;
+	  		margin-top: 5px;
+	  	}
+
+	  	.hide_error .warn {
+	  		visibility: hidden;
+	  	}
+
+	  	p.arguement {
+	  		font-size: 14px;
+	  	}
+	  	
+	  	.footer {
+	  		font-size: 13px;
+	  		color: #999;
+	  		text-align: center;
+	  		padding: 24px 12px;
+	  		background-color: black;
+	  	}
+
+	  	@media (max-width: 768px) {
+	  		.container {
+	  			width: initial;
+	  			margin: 24px 12px;
+	  			box-shadow: none;
+	  			padding: 20px;
+	  		}
+
+	  		.formitems > input {
+	  			width: 85%;
+	  			max-width: 230px;
+	  		}
+
+	  		.footer {
+	  			padding: 12px auto;	  		
+	  		}
+	  	}
+	  </style>
+	</head>
+	<body>
+		<div class="container">
+			<form class="formitems" action="">
+				<h1 class="title">新拖延運動報名表單</h1>
+			  <h4 class="info">活動日期：2020/12/10 ~ 2020/12/11</h4>
+			  <h4 class="info">活動地點：台北市大安區新生南路二段1號</h4>
+			  <div class="note"><span class="star">*</span> 必填</div>
+				<div class="item required hide_error">
+					<label for="nickame">暱稱 <span class="star">*</span></label>
+          <input type="text" id="nickame" name="nickame" placeholder="您的回答" />
+          <div class="warn">請填寫暱稱</div>
+				</div>
+				<div class="item required hide_error">
+					<label for="email">電子郵件 <span class="star">*</span></label>
+          <input type="text" id="email" name="email" placeholder="您的電子郵件" />
+          <div class="warn">請填寫電子郵件</div>
+				</div>
+        <div class="item required hide_error">
+        	<label for="number">手機號碼 <span class="star">*</span></label>
+          <input type="text" id="number" name="number" placeholder="您的手機號碼" />
+          <div class="warn">請填寫手機號碼</div>
+        </div>
+        <div class="item required hide_error">
+        	<label>報名類型 <span class="star">*</span><label>
+	        <div class="radio">
+	        	<input class="radio" type="radio" id="applytype_a" name="applytype" value="1" />
+	          <label class="radio" for="applytype">躺在床上用想像力實作</label>
+	        </div>
+	        <div class="radio">
+	        	<input class="radio" type="radio" id="applytype_b" name="applytype" value="2" />
+	          <label class="radio" for="applytype">趴在地上滑手機找現成的</label>
+	        </div>
+	        <div class="warn">請填寫報名類型</div>
+        </div>
+        <div class="item required hide_error">
+        	<label for="know">怎麼知道這個活動的? <span class="star">*</span></label> 
+          <input type="text" id="know" name="know" placeholder="您的回答" />
+          <div class="warn">請填寫得知方法</div>
+        </div>
+        <div class="item">
+        	<label for="addvice">其他<br><span class="text">對活動的一些建議</span></label>
+          <input type="text" id="addvice" name="addvice" placeholder="您的回答" />
+        </div>
+        <input class="submit-button" type="submit" />
+        <p class="arguement">請勿透過表單送出你的密碼。</p>
+			</form>
+		</div>
+		<footer class="footer">© 2020 © Copyright. All rights Reserved.</footer>
+	  <script>
+	  	document
+	  	.querySelector('form')
+	  	.addEventListener('submit', function(e) {
+	  		e.preventDefault()
+	  		let hasError = false
+	  		let values = {} //不知道為甚麼設成物件
+	  		const elements = document.querySelectorAll('.required')
+
+	  		for(let element of elements) {
+	  		  const input = element.querySelector('input[type=text]')
+	  		  const radios = element.querySelectorAll('input[type=radio]')
+	  		  let isValid = true
+	  		  if (input) {//表示有找到東西
+	  		  	values[input.name] = input.value
+	  		  	if (!input.value) {
+	  		  		isValid = false
+	  		  	}
+	  			} else if (radios.length) {
+	  				isValid = [...radios].some(radio => radio.checked)
+	  				if (isValid) {
+	  					let r = element.querySelector('input[type=radio]:checked')//css 選擇器選擇被勾選的
+	  					values[r.name] = r.value
+	  				}
+	  			} else {
+	  				continue//兩個都沒有就跳掉
+	  			}
+
+	  			if (!isValid) {
+	  	    	element.classList.remove('hide_error')
+	  	    	hasError = true
+	  	    } else {
+	  	    	element.classList.add('hide_error')
+	  	    } 
+	  		}
+
+	  		if (!hasError) {
+	  			alert(JSON.stringify(values))
+	  		}
+	  	})
+	  </script>
+	</body>
+</html>
