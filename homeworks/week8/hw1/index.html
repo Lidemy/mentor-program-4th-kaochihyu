@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+ 	<head>
+	 	<meta charset="utf-8">
+		<title>餐廳官網</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+		<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+		<style>
+			* {
+				font-family: '微軟正黑體';
+			}
+			.navbar {
+				box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+			}
+
+			.navbar .wrapper {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				height: 84px;
+				background-color: #fff;
+				padding: 0 24px;
+			}
+
+			.navbar_sitename {
+				color: #489846;
+				font-size: 36px;
+				font-family: 'Questrial';
+			}
+
+			.navbar_list {
+				list-style: none;
+				display: flex;
+				font-size: 18px;
+				margin: 0px;
+				font-family: '微軟正黑體';
+			}
+
+			.navbar_list li {
+				margin-left: 60px;
+				border-radius: 8px;
+				transition: 0.2s;
+				text-align: center;
+			}
+
+			.navbar_list li.active, .navbar_list li:hover {
+				background-color: #ff7286;
+			}
+
+			.navbar_list a {
+				display: block;
+				text-decoration: none;
+				color: black;
+				padding: 14px 24px;
+			}
+
+			.navbar_list li.active a, .navbar_list a:hover {
+				color: #fff;
+			}
+
+			.wrapper {
+				max-width: 1280px;
+				margin: 0 auto;
+				padding: 12px;
+			}
+
+			.section {
+				min-height: 767px;
+				background: url('image/games-bn.png');
+				background-size: cover;
+			}
+
+			.card {
+				padding: 40px 40px 80px 40px;
+				margin: 55px auto;
+				max-width: 500px;
+				/*height: 580px;*/
+				box-sizing: border-box;
+				border-radius: 16px;
+				background-color: #fff;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+
+			.card h4 {
+				margin-top: 0px;
+				margin-bottom: 40px;
+				font-family: '微軟正黑體';
+				font-size: 24px;
+				font-weight: bold;
+				text-align: center;
+				color: #5ec1b6;
+			}
+
+			.item {
+				border-bottom: dotted 1px #cdcdcd;
+				margin-top: 20px;
+				padding-bottom: 16px;
+				display: flex;
+				align-content: flex-start;
+			}
+
+			.item_title {
+				font-size: 18px;
+				font-weight: bold;
+				color: #322929;
+				/*display: inline-block;*/
+				width: 90px;
+				line-height: 1.63;
+			}
+
+			.item_content {
+				font-size: 16px;
+				color: #322929;
+				letter-spacing: normal;
+				line-height: 1.63;
+				flex: 1;
+				width: 350px;
+			}
+
+			.btn_attend {
+				width: 400px;
+				height: 55px;
+				border-radius: 8px;
+				background-color: #e62a45;
+				color: #fff;
+				border: none;
+				/*margin-top: 36px;*/
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				cursor: pointer;
+			}
+
+			button.btn_attend:focus {
+				outline: none;
+			}
+
+			/*中獎結果*/
+			.hide {
+				display: none;
+			}
+
+			.result {
+				padding: 20px 40px;
+				border-radius: 10px;
+				position: absolute;
+				top: 200px;
+				left: 50%;
+				transform: translate(-50%);
+			}
+
+			.result_btn {
+				width: 200px;
+				padding: 20px;
+				text-align: center;
+				border-radius: 8px;
+				background-color: #e62a45;
+				color: #fff;
+				margin-top: 24px;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				cursor: pointer;
+			}
+
+			.first, .second, .third, .none {
+				background-size: cover;
+			}
+
+			.section.first {
+				background: url('image/flight.jpg');
+			}
+
+			.section.second {
+				background: url('image/living-room.jpg');
+			}
+
+			.section.third {
+				background: url('image/youtube.jpg');
+			}
+
+			.section.none {
+				background: black;
+				color: white;
+			}
+
+
+			footer {
+				margin-top: 0px;
+				font-family: 微軟正黑體;
+				}
+
+			.footer_top {
+				background-color: #e8efee;
+				color: #484848;
+				padding: 44px 0;
+			}
+
+			.footer_top .wrapper {
+				display: flex;
+				justify-content: space-between;
+				box-sizing: border-box;
+
+			}
+
+			.footer_info div {
+				font-size: 14px;
+			}
+
+			.footer_info div + div {
+				margin-top: 16px;
+			}
+
+			.footer_site {
+				font-size: 36px;
+				color: #489846;
+				text-align: right;
+			}
+
+			.footer_sns {
+				font-size: 14px;
+				font-family: 'Questrial';
+				text-align: right;
+				margin-top: 18px;
+			}
+
+			.footer_bottom {
+				padding: 12px;
+				font-size: 16px;
+				color: white;
+				background-color: ;
+				background-color: #35564b;
+				text-align: center;
+				font-family: "微軟正黑體";
+			}
+
+			@media(max-width: 768px) {
+				.navbar .wrapper {
+					height: 180px;
+					flex-direction: column;
+					justify-content: space-between;
+					padding: 0px;
+					text-align: center;
+			}
+
+				.navbar_sitename {
+						margin-top: 10px;
+			}
+
+				.navbar_list {
+						display: flex;
+						width: 100%;
+						padding: 0px;
+			}
+
+				.navbar_list li {
+						flex: 1;
+						border-radius: 0px;
+						margin-left: 0px;
+			}
+				.section {
+					height: 900px;
+			}
+
+				.card {
+					width: 100%;
+					border-radius: 0;
+			}
+
+				.btn_attend {
+					width: 80%;
+
+			}
+
+
+				.footer_top .wrapper {
+						flex-direction: column-reverse;
+			}
+
+				.footer_info {
+						margin-right: 0;
+						margin-top: 16px;
+			}
+
+				.footer_site, .footer_sns {
+						text-align: initial;
+			}
+		}	
+		</style>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="wrapper">
+				<div class="navbar_sitename">
+					Just A Bite!
+				</div>
+				<ul class="navbar_list">
+					<li class="active"><a href="#">抽個大獎</a></li>
+					<li><a href="#">我要點餐</a></li>
+			  	<li><a href="#">查詢訂單</a></li>
+			  	<li><a href="#">常見問題</a></li>
+				</ul>	
+			</div>
+		</nav>
+		<div class="section">
+			<div class="card">
+				<h4>2020 夏日輕盈特賞！ 抽獎活動辦法</h4>
+				<div class="item">
+					<div class="item_title">活動期間：</div>
+					<div class="item_content">2020/06/01~2020/07/01</div>
+				</div>
+				<div class="item">
+					<div class="item_title">活動說明：</div>
+					<div class="item_content">今天老闆佛心來著決定給大家發獎勵，有看有機會，沒看只能幫QQ！只要在店內消費滿1000000元即有機會獲得 - 頭獎日本東京來回雙人遊！</div>
+				</div>
+				<div class="item">
+					<div class="item_title">獎  品：</div>
+					<div class="item_content">❤ 頭獎一名：日本東京來回雙人遊(市價14990元)<br>❤ 貳獎三名：90 吋電視一台(市價5990元)<br>❤ 參獎十名：知名 YouTuber 簽名握手會入場券一張(市價1500元)</div>
+				</div>
+				<button class="btn_attend">我要抽獎</button>
+			</div>
+			<div class="result hide">
+				<h2 class="result_title">恭喜你中頭獎了！日本東京來回雙人遊！</h2>
+				<div class="result_btn" onclick="javascript:window.location.reload()">我要抽獎</div>
+			</div>
+		</div>
+		
+		<footer>
+			<div class="footer_top">
+				<div class="wrapper">
+					<div class="footer_info">
+						<div>餐館地址: 天上地下天堂路三分之一里六段520號</div>
+						<div>訂位專線：02-1314-5566</div>
+						<div>營業時間：週一〜週五 09:00~18:00 / 週六、週日、國定假日（含連假）休息</div>
+						<div>email：service@justabite.com.tw</div>
+					</div>
+					<div>
+						<div class="footer_site">Just A Bite!</div>
+						<div class="footer_sns">Facebook / Instagram / Youtube</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer_bottom">Copyright © 2020 Just A Bite All Rights Reserved. 咬一口股份有限公司版權所有</div>
+		</footer>
+		<script>
+			const apiUrl = 'https://dvwhnbka7d.execute-api.us-east-1.amazonaws.com/default/lottery'
+			const erroMessage = '系統不穩定，請再試一次'
+			document
+						.querySelector('.btn_attend')
+						.addEventListener('click', function() {
+							var request = new XMLHttpRequest();
+							request.open('GET', apiUrl, true)
+							request.onload = function() {
+								if (request.status >= 200 && request.status < 400) {
+									let obj
+									try {
+										obj = JSON.parse(request.response)
+									} catch(err) {//拿回來的格式不是 JSON
+										alert(erroMessage)
+										console.log(err)
+										return 
+									} 
+
+									if (!obj.prize) {//拿回來的東西沒有 prize
+										alert(erroMessage)
+										return 
+									}
+
+									//如果拿回來的東西有 prize
+									let className
+									let title
+									if (obj.prize === 'FIRST') {
+										className = 'first'
+										title = '恭喜你中頭獎了！日本東京來回雙人遊！'
+									} else if (obj.prize === 'SECOND') {
+										className = 'second'
+										title = '二獎！90 吋電視一台！'
+									} else if (obj.prize === 'THIRD') {
+										className = 'third'
+										title = '恭喜你抽中三獎：知名 YouTuber 簽名握手會入場券一張，bang！'
+									} else if (obj.prize === 'NONE') {
+										className = 'none'
+										title = '銘謝惠顧'
+									}
+									document.querySelector('.section').classList.add(className)
+									document.querySelector('.result_title').innerText = title
+									document.querySelector('.card').classList.add('hide')
+									document.querySelector('.result').classList.remove('hide')
+								} else {
+									alert(erroMessage)
+								}
+							};
+							request.onerror = function() {
+								alert(erroMessage)
+							};
+							request.send()
+					});
+		</script>
+	</body>
+</html>
