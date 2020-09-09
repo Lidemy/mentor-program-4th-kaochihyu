@@ -3,7 +3,7 @@
 	require_once('./conn.php');
 	function getUserFromUsername($username) {
 		global $conn;
-		$sql = "SELECT * FROM users WHERE username = '$username'";
+		$sql = "SELECT * FROM kaochihyu_users WHERE username = '$username'";
 		$result = $conn->query($sql);
 		$row = $result->fetch_assoc();
 		return $row;

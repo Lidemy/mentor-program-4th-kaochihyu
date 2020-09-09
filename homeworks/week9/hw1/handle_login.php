@@ -13,7 +13,7 @@
 	}
 
 	// 從資料庫找到包含 username 跟 password 的資料
-	$sql = "SELECT * FROM users WHERE username = '$username' and password ='$password'";
+	$sql = "SELECT * FROM kaochihyu_users WHERE username = '$username' and password ='$password'";
 	$result = $conn->query($sql);
 	if (!$result) {
 		die($conn->error);
