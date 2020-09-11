@@ -10,7 +10,7 @@
 		die('empty data');
 	}
 
-	$sql = "INSERT INTO users(nickname, username, password) VALUES ('$nickname', '$username', '$password')";
+	$sql = "INSERT INTO kaochihyu_users(nickname, username, password) VALUES ('$nickname', '$username', '$password')";
 	$result = $conn->query($sql);
 	if (!$result) {
 		$code = $conn->errno;//

@@ -13,7 +13,7 @@
 	$user = getUserFromUsername($_SESSION['username']);
 	$nickname = $user['nickname'];
 
-	$sql = "INSERT INTO my_comments(nickname, content) VALUES ('$nickname', '$content')";
+	$sql = "INSERT INTO kaochihyu_comments(nickname, content) VALUES ('$nickname', '$content')";
 	$result = $conn->query($sql);
 	if ($result) {
 		header('Location: ./index.php');
