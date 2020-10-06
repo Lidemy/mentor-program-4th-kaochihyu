@@ -39,41 +39,34 @@
       }
     }
 
+    function getCommentsAPI(sitekey, before, cb) {
+      let url = `http://mentor-program.co/mtr04group1/kaochihyu/week12/hw1/api_discussions_example.php?site_key=${sitekey}`
+      if (before) {
+        url += '&before=' + before
+      }
+      $.ajax({
+        url: url,
+      }).done(function(data) {
+        cb(data)
+      });
+    }
+
     //串 api
     //顯示留言
+    const siteKey = 'aa'
+    const loadMoreButtonHTML = '<button class="btn btn-primary mt-3 load_more">載入更多</button>'
+    let lastId = null
+    let isEnd = false
+
     $(document).ready(() => {
-      const commentDOM = $('.comments');
-      $.ajax({
-        url: "http://mentor-program.co/mtr04group1/kaochihyu/week12/hw1/api_discussions.php?site_key=aa",
-      }).done(function(data) {
-        if (!data.ok) {
-          alert(data.message)
-          return
-        }
-        const comments = data.discussions;
-        for (let comment of comments) {
-          appendCommentToDom(commentDOM, comment);
-        }
+      const commentDOM = $('.comments')
+      getComments();
 
-        // 載入更多
-        if (comments.length > 5) {
-          $('.btn_more').removeClass('hide');
-        }
-          
-        // 顯示前五個
-        $('.card').slice(5).addClass('hide');
+      $('.comments').on('click', '.load_more', () => {
+        getComments();
+      })
 
-        var start = 0;
-        var end = 5;
-        $('.btn_more').click(function () {
-          start += 5;
-          end += 5;
-          console.log(start, end)
-          $('.card').slice(start, end).removeClass('hide');   
-        });
-
-      });
-
+    
       //新增留言
       $('.add_comment_form').submit(e => {
         e.preventDefault();
@@ -84,7 +77,7 @@
         }
         $.ajax({
           type: 'POST',
-          url: 'http://mentor-program.co/mtr04group1/kaochihyu/week12/hw1/api_add_discussions.php?site_key=aa',
+          url: 'http://mentor-program.co/mtr04group1/kaochihyu/week12/hw1/api_add_discussions.php',
           data: newCommentData
         }).done(function(data) {
           if (!data.ok) {
@@ -96,18 +89,36 @@
 
           appendCommentToDom(commentDOM, newCommentData, true);
 
-          var start = 0;
-          var end = 5;
-          $('.btn_more').click(function () {
-            start += 5;
-            end += 5;
-            console.log(start, end)
-            $('.card').slice(start, end).removeClass('hide');   
-          });
-
         })
       })
     })
+
+    function getComments() {
+      $('.load_more').hide();
+      const commentDOM = $('.comments')
+      getCommentsAPI(siteKey, lastId, data => {
+        if (!data.ok) {
+          alert(data.message)
+          return
+        }
+
+        const comments = data.discussions;
+        for (let comment of comments) {
+          appendCommentToDom(commentDOM, comment);
+        }
+        let length = comments.length;
+        if (length === 0) {
+          isEnd = true
+          $('.load_more').hide()
+        } else {
+          lastId = comments[length - 1].id;
+          $('.comments').append(loadMoreButtonHTML);
+        }  
+      })
+    }
+
+    
+    
   </script>
 </head>
 <body>
