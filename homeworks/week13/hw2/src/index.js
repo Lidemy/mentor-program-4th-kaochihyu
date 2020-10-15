@@ -3,7 +3,7 @@ import { appendCommentToDom, appendStyle } from './utils';
 import { cssTemplate, getLoadMoreButton, getForm } from './template';
 import $ from 'jquery';// eslint-disable-line
 
-function init(options) {
+export function init(options) {// eslint-disable-line
   const { siteKey } = options;
   const { apiUrl } = options;
   let containerElement = null;
@@ -67,4 +67,3 @@ function init(options) {
     getComments();
   });
 }
-export default init();
