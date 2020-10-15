@@ -1,0 +1,271 @@
+$gray-01: #aaa;
+
+@mixin size($w, $h) {
+	width: $w;
+	height: $h
+}
+
+* {
+	font-family: 微軟正黑體;
+	box-sizing: border-box;
+}
+
+body, html {
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+li {
+	list-style: none;
+}
+
+.error {
+	color: red;
+}
+
+.space_between {
+	display: flex;
+	justify-content: space-between;
+}
+
+.navbar {
+	background-color: #fff;
+	width: 100%;
+	padding: 10px 40px;
+	position: fixed;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+}
+
+.nav {
+	&_item_wrap {
+		margin-left: 40px;
+		display: flex;
+		flex: 1;
+		justify-content: space-between;
+	}
+	
+	&_items {
+		padding: 0px;
+		display: flex;
+		align-items: flex-end;
+	}
+
+	&_items li {
+		margin-left: 20px;
+	}
+}
+
+
+.blog_title {
+	display: inline-block;
+	font-size: 26px;
+	font-weight: bold;
+}
+
+.section_title {
+	@include size(100%, 320px);
+	position: absolute;
+	background-color: #e1e1e1;
+	text-align: center;
+	z-index: 0;
+
+	&  h2 {
+		padding-top: 140px;
+		margin: 0;
+	}
+}
+
+section {
+	padding: 0 auto;
+	display: flex;
+	justify-content: center;
+}
+
+.articles {
+	padding: 15px;
+	background-color: #fff;
+	z-index: 6;
+	margin-top: 280px;
+	margin-bottom: 20px;
+}
+
+.article_card {
+	box-sizing: border-box;
+	border: 1px solid $gray-01;
+	padding: 20px 30px;
+	margin-bottom: 10px;
+	width: 900px;
+
+	& h3 {
+		display: inline-block;
+	} 
+}
+
+.index_content {
+	white-space: pre-line;
+	height: 252px;
+	overflow: hidden;
+}
+
+.edit_btn {
+	font-size: 16px;
+	color: $gray-01;
+	padding: 5px 10px;
+	font-weight: normal;
+}
+
+.time_area {
+	background-color: #f1f1f1;
+	color: $gray-01;
+	padding: 10px;
+	height: 40px;
+	margin-top: 10px;
+}
+
+.content {
+	white-space: pre-line;
+}
+
+.readmore_btn, .edit_btn {
+	border: 1px solid $gray-01;
+	display: inline-block;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.readmore_btn {
+	margin-top: 20px;
+	padding: 10px 20px;
+}
+
+
+.footer {
+	position: relative;
+	background-color: #e1e1e1;
+	color: #555;
+	padding: 10px;
+	text-align: center;
+	margin-top: 40px;
+}
+
+/*login*/
+.login_panel {
+	max-width: 530px;
+	margin: 50px auto;
+	border: 1px solid #000;
+	padding: 50px;
+
+	&_form {
+		display: flex;
+		flex-direction: column;
+	}
+
+	& h1 {
+		text-align: center;
+		margin-bottom: 40px;
+	}
+
+	& label {
+		margin-bottom: 5px;
+	}
+
+	& input {
+		margin-bottom: 20px;
+		padding: 5px;
+	}
+}
+
+.login_submit_btn {
+	background-color: #555;
+	margin-top: 50px;
+	color: white;
+	border: none;
+	height: 56px;
+}
+
+
+/*add_article*/
+.add_article {
+	&_card {
+		height: 600px;
+	}
+
+	&_form input {
+		margin-bottom: 20px;
+		padding: 8px;
+	}
+
+	&_btn {
+		@include size(130px, 40px);
+		background-color: #fff;
+		border: 1px solid #555;
+		margin-top: 20px;
+		float: right;
+	}
+}
+
+.input_area {
+	display: flex;
+	flex-direction: column;
+}
+
+
+/*admin*/
+.article_list_board {
+	border: none;
+}
+
+.article_list_card {
+	padding: 25px;
+	border-bottom: 1px solid $gray-01;
+	text-align: justify;
+
+	& h3 {
+		display: inline-block;
+		margin: 0px;
+		padding: 0px;
+	}
+}
+
+.created_time {
+	color: $gray-01;
+}
+
+/*page_info*/
+.page_info, .pagination {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.pagination a {
+	box-sizing: border-box;
+	width: 80px;
+	border: 1px solid #888;
+	color: #888;
+	padding: 5px 10px;
+}
+
+@media only screen and (max-width: 768px) {
+	.navbar {
+		flex-direction: column;
+	}
+
+	.nav_item_wrap {
+		margin-left: 0;
+	}
+
+	.article_card {
+		width: 100%;
+	}
+
+	.space_between {
+		flex-wrap: wrap;
+	}
+}
