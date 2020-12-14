@@ -25,6 +25,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    "eslint-plugin-react"
   ],
   rules: {
     "no-console": "off",
