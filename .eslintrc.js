@@ -6,6 +6,13 @@ module.exports = {
     jest: true
   },
   extends: 'airbnb',
+  settings: {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".json", ".native.js"]
+      }
+    }
+  },
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -18,11 +25,9 @@ module.exports = {
   },
   plugins: [
     'react',
+    "eslint-plugin-react"
   ],
   rules: {
     "no-console": "off",
-    "react/jsx-filename-extension": [1, 
-      { "extensions": [".js", ".jsx"] 
-    }],
   },
 };
