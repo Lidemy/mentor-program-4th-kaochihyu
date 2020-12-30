@@ -1,9 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createSelector } from 'reselect';
 import styled from 'styled-components';
-import { selectTodos } from '../../redux/selectTodos';
-import { selectFilters } from '../../redux/selectFilters';
+import {
+  selectTodos,
+  selectFilters,
+  rateOfDone,
+  selectCompleteTodos,
+  selectActiveTodos,
+} from '../../redux/selectors';
 import AddTodo from './AddTodo';
 import Template from './Template';
 import {
@@ -69,32 +73,6 @@ const Button = styled.div`
     color: #333;
   }
 `;
-
-const selectNumOfDoneTodos = createSelector(
-  selectTodos,
-  todos => todos.filter(todo => todo.completed).length,
-);
-
-const selectNumOfAllTodos = createSelector(
-  selectTodos,
-  todos => todos.length,
-);
-
-const rateOfDone = createSelector(
-  selectNumOfDoneTodos,
-  selectNumOfAllTodos,
-  (done, all) => Math.floor((Number(done) / Number(all)) * 100),
-);
-
-const selectCompleteTodos = createSelector(
-  selectTodos,
-  todos => todos.filter(todo => todo.completed),
-);
-
-const selectActiveTodos = createSelector(
-  selectTodos,
-  todos => todos.filter(todo => !todo.completed),
-);
 
 const DoneTodosCounter = () => {
   const rateOfDoneTodos = useSelector(rateOfDone);

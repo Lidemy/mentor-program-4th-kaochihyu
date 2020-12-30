@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import {
   ADD_TODO,
   DELETE_TODO,
@@ -22,13 +23,12 @@ export default function todosReducer(state = initialState, action) {
   console.log('received action', action);
   switch (action.type) {
     case ADD_TODO: {
-      // eslint-disable-next-line
-      return { 
+      return {
         ...state, // 要這樣寫才能保留原本的 state 然後添加新的東西
         todos: [
           ...state.todos,
           {
-            id: todoId += 1, // 寫這樣 eslint 就出現 no-return-asign，寫 todoId++ 就出現 no-plusplus
+            id: todoId++, // eslint-disable-no-plusplus
             name: action.payload.name,
             completed: false,
             editing: false,
