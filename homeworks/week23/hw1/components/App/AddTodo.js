@@ -40,7 +40,6 @@ const AddButton = styled.div`
   }
 `;
 
-// dumb component/component，不知道 redux 的存在
 export default function AddTodo() {
   const dispatch = useDispatch();
   const [value, setValue] = useState('');
